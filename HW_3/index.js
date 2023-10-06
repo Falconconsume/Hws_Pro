@@ -4,9 +4,10 @@ if(isNaN(userHours))
 {
     alert("Введіть число!!!");
 }
-else {
+else 
+{
     const userSeconds = 3600 * userHours;
-    alert (" В годиннах: " + userHours+ ";" + " У секундах:" + userSeconds);
+    alert (" В годиннах: " + userHours + ";" + " У секундах:" + userSeconds);
 }
 
 
