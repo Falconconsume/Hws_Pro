@@ -48,6 +48,7 @@ switch(actionUser)
         }
     }
     alert(`${actionUser} of ${firstNumber} and ${secondNumber} equals: ${result}`);
+    alert(greeting);
     break;
 
     case `Sqrt`:
@@ -82,10 +83,12 @@ switch(actionUser)
                 }
         }
         alert(`${actionUser} of ${digit} equals: ${result}`);
+        alert(greeting);
         break;
 
         default:
         {
             alert(greeting);
         }
+
 }

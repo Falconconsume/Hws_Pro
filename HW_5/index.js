@@ -9,7 +9,7 @@ if(actionUser === `Add` || actionUser === `Diff` || actionUser === `Mult` || act
 
     if (isNaN(firstNumber) || isNaN(secondNumber))
     {
-        alert(`This is bad digit, good bye`);
+        alert(greeting);
     }
 
     else
