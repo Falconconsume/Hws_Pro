@@ -14,9 +14,10 @@ switch(actionUser)
     const firstNumber = Number(prompt(`Enter the first number:`));
     const secondNumber = Number(prompt(`Enter the second number:`));
 
+    isNaN(firstNumber || secondNumber) ? (alert(`This is bad digit, good bye!`)) : (null);
+
     if(isNaN(firstNumber || secondNumber))
     {
-        alert(`This is bad digit, good bye!`)
         break;
     }
 
@@ -55,9 +56,10 @@ switch(actionUser)
 
         const digit = Number(prompt(`Enter the number:`));
 
+        isNaN(digit) ? (alert(`This is bad digit, good bye!`)) : (null);
+    
         if(isNaN(digit))
         {
-            alert(`This is bad digit, good bye!`);
             break;
         }
 
