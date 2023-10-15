@@ -5,43 +5,44 @@ const actionUser = prompt(`What action do you want to do? Add, Diff, Mult, Div, 
 if(actionUser === `Add` || actionUser === `Diff` || actionUser === `Mult` || actionUser === `Div`)
 {
     const firstNumber = Number(prompt(`Enter first number: `));
-    const secondNumber = Number(prompt(`Enter second number: `));
-
-    if (isNaN(firstNumber) || isNaN(secondNumber))
+    if (isNaN(firstNumber) || firstNumber === 0)
     {
-        alert(greeting);
+        alert(`This is bad digit, good bye!`);
+        throw new Error(`Invalid input`);
     }
 
-    else
+    const secondNumber = Number(prompt(`Enter second number: `));
+    if (isNaN(secondNumber) || secondNumber === 0)
     {
-        if(actionUser === `Add`)
+        alert(`This is bad digit, good bye!`);
+        throw new Error(`Invalid input`);
+    }
+
+    else if(actionUser === `Add`)
     {
         const sum = firstNumber + secondNumber;
         alert(`Sum of ${firstNumber} and ${secondNumber} equals: ${sum}`);
+        alert(greeting);
     }
-
     else if(actionUser === `Diff`)
     {
         const diffAction = firstNumber - secondNumber;
         alert(`Difference of ${firstNumber} and ${secondNumber} equals: ${diffAction}`);
+        alert(greeting);
     }
-
     else if(actionUser === `Mult`)
     {
         const multAction = firstNumber * secondNumber;
         alert(`Mult of ${firstNumber} and ${secondNumber} equals: ${multAction}`);
+        alert(greeting);
     }
-
     else if(actionUser === `Div`)
     {
         const divAction = firstNumber / secondNumber;
         alert(`Div of ${firstNumber} and ${secondNumber} equals: ${divAction}`);
+        alert(greeting);
     }
-    alert(greeting);
-
-}       
 }
-
 else if(actionUser === `Sqrt`|| actionUser === `Sin`|| actionUser === `Cos`)
 {
         
@@ -49,38 +50,28 @@ else if(actionUser === `Sqrt`|| actionUser === `Sin`|| actionUser === `Cos`)
 
     if(isNaN(digit))
     {
-        alert(`This is bad digit, good bye`);
+        alert(`This is bad digit, good bye!`);
+        throw new Error(`Invalid input`);
     } 
 
-    else
+    if(actionUser === `Sqrt`)
     {
-
-        if(actionUser === `Sqrt`)
-        {
-            const sqrtAction = Math.sqrt(digit);
-            alert(`Root of ${digit} equals: ${sqrtAction}`);
-        }
-
-        else if(actionUser === `Sin`)
-        {
-            const sinAction = Math.sin(digit);
-            alert(`Sin of ${digit} equals: ${sinAction}`);
-        }
-
-        else if(actionUser === `Cos`)
-        {
-            const cosAction = Math.cos(digit);
-            alert(`Sin of ${digit} equals: ${cosAction}`);
-        }
-        
+        const sqrtAction = Math.sqrt(digit);
+        alert(`Root of ${digit} equals: ${sqrtAction}`);
         alert(greeting);
     }
-    
-}
-
-else if(isNaN(actionUser))
-{
-    alert(greeting)
+    else if(actionUser === `Sin`)
+    {
+        const sinAction = Math.sin(digit);
+        alert(`Sin of ${digit} equals: ${sinAction}`);
+        alert(greeting);
+    }
+    else if(actionUser === `Cos`)
+    {
+        const cosAction = Math.cos(digit);
+        alert(`Sin of ${digit} equals: ${cosAction}`);
+        alert(greeting);
+    }
 }
 
 else 
