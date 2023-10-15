@@ -18,7 +18,7 @@ if(actionUser === `Add` || actionUser === `Diff` || actionUser === `Mult` || act
         throw new Error(`Invalid input`);
     }
 
-    else if(actionUser === `Add`)
+    if(actionUser === `Add`)
     {
         const sum = firstNumber + secondNumber;
         alert(`Sum of ${firstNumber} and ${secondNumber} equals: ${sum}`);
