@@ -12,11 +12,19 @@ switch(actionUser)
     case `Div`:
     
     const firstNumber = Number(prompt(`Enter the first number:`));
+
+    isNaN(firstNumber) || firstNumber === 0 ? (alert(`This is bad digit, good bye!`))  : (null);
+
+    if(isNaN(firstNumber) || firstNumber === 0)
+    {
+        break;
+    }
+
     const secondNumber = Number(prompt(`Enter the second number:`));
+    
+    isNaN(secondNumber) || secondNumber === 0 ? (alert(`This is bad digit, good bye!`)) : (null);
 
-    isNaN(firstNumber || secondNumber) ? (alert(`This is bad digit, good bye!`)) : (null);
-
-    if(isNaN(firstNumber || secondNumber))
+    if(isNaN(secondNumber))
     {
         break;
     }
@@ -57,9 +65,9 @@ switch(actionUser)
 
         const digit = Number(prompt(`Enter the number:`));
 
-        isNaN(digit) ? (alert(`This is bad digit, good bye!`)) : (null);
+        isNaN(digit) || digit === 0 ? (alert(`This is bad digit, good bye!`)) : (null);
     
-        if(isNaN(digit))
+        if(isNaN(digit) || digit === 0)
         {
             break;
         }
@@ -90,5 +98,4 @@ switch(actionUser)
         {
             alert(greeting);
         }
-
 }
