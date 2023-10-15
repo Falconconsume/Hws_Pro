@@ -48,7 +48,7 @@ else if(actionUser === `Sqrt`|| actionUser === `Sin`|| actionUser === `Cos`)
         
     const digit = Number(prompt(`Enter a number:`));
 
-    if(isNaN(digit))
+    if(isNaN(digit) || digit === 0)
     {
         alert(`This is bad digit, good bye!`);
         throw new Error(`Invalid input`);
