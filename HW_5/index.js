@@ -5,20 +5,15 @@ const actionUser = prompt(`What action do you want to do? Add, Diff, Mult, Div, 
 if(actionUser === `Add` || actionUser === `Diff` || actionUser === `Mult` || actionUser === `Div`)
 {
     const firstNumber = Number(prompt(`Enter first number: `));
-    if (isNaN(firstNumber) || firstNumber === 0)
-    {
-        alert(`This is bad digit, good bye!`);
-        throw new Error(`Invalid input`);
-    }
-
     const secondNumber = Number(prompt(`Enter second number: `));
-    if (isNaN(secondNumber) || secondNumber === 0)
+    if ((isNaN(firstNumber) || firstNumber === 0) || (isNaN(secondNumber) || secondNumber === 0))
     {
         alert(`This is bad digit, good bye!`);
-        throw new Error(`Invalid input`);
     }
 
-    if(actionUser === `Add`)
+    else
+    {
+        if(actionUser === `Add`)
     {
         const sum = firstNumber + secondNumber;
         alert(`Sum of ${firstNumber} and ${secondNumber} equals: ${sum}`);
@@ -42,6 +37,7 @@ if(actionUser === `Add` || actionUser === `Diff` || actionUser === `Mult` || act
         alert(`Div of ${firstNumber} and ${secondNumber} equals: ${divAction}`);
         alert(greeting);
     }
+    }
 }
 else if(actionUser === `Sqrt`|| actionUser === `Sin`|| actionUser === `Cos`)
 {
@@ -51,10 +47,10 @@ else if(actionUser === `Sqrt`|| actionUser === `Sin`|| actionUser === `Cos`)
     if(isNaN(digit) || digit === 0)
     {
         alert(`This is bad digit, good bye!`);
-        throw new Error(`Invalid input`);
-    } 
-
-    if(actionUser === `Sqrt`)
+    }
+    else
+    {
+        if(actionUser === `Sqrt`)
     {
         const sqrtAction = Math.sqrt(digit);
         alert(`Root of ${digit} equals: ${sqrtAction}`);
@@ -69,9 +65,10 @@ else if(actionUser === `Sqrt`|| actionUser === `Sin`|| actionUser === `Cos`)
     else if(actionUser === `Cos`)
     {
         const cosAction = Math.cos(digit);
-        alert(`Sin of ${digit} equals: ${cosAction}`);
+        alert(`Cos of ${digit} equals: ${cosAction}`);
         alert(greeting);
     }
+    } 
 }
 
 else 
