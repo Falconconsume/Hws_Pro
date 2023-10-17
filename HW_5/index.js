@@ -1,77 +1,53 @@
-alert(`Welcome to calculator!`);
+alert(`Welcome to the calculator`);
+const actionUser = prompt(`What action you want to do? Add, Diff, Mult, Div, Sqrt, Sin, Cos`);
+
 const greeting = `Good bye, see you later!`;
-const actionUser = prompt(`What action do you want to do? Add, Diff, Mult, Div, Sqrt, Sin, Cos`);
+let result;
 
-if(actionUser === `Add` || actionUser === `Diff` || actionUser === `Mult` || actionUser === `Div`)
-{
-    const firstNumber = Number(prompt(`Enter first number: `));
-    const secondNumber = Number(prompt(`Enter second number: `));
-    if ((isNaN(firstNumber) || firstNumber === 0) || (isNaN(secondNumber) || secondNumber === 0))
-    {
+if (actionUser === `Add` || actionUser === `Diff` || actionUser === `Mult` || actionUser === `Div`) {
+    firstNumber = Number(prompt(`Enter first number`));
+    if (isNaN(firstNumber) || firstNumber === 0) {
+        alert(`First number is invalid!!!`);
+    }
+
+    secondNumber = Number(prompt(`Enter second number`));
+
+    if (isNaN(secondNumber) || secondNumber === 0) {
+        alert(`Second number is invalid!`);
+    }
+
+    if (isNaN(firstNumber) || isNaN(secondNumber) || firstNumber === 0 || secondNumber === 0) {
+        alert(`This is bad digit, good bye`);
+    } else {
+        if (actionUser === `Add`) {
+            result = firstNumber + secondNumber;
+        } else if (actionUser === `Diff`) {
+            result = firstNumber - secondNumber;
+        } else if (actionUser === `Mult`) {
+            result = firstNumber * secondNumber;
+        } else if (actionUser === `Div`) {
+            result = firstNumber / secondNumber;
+        }
+        alert(`${actionUser} of ${firstNumber} and ${secondNumber} is ${result}`);
+        alert(greeting);
+    }
+} else if (actionUser === `Sqrt` || actionUser === `Sin` || actionUser === `Cos`) {
+    const digit = Number(prompt(`Enter the number: `));
+
+    if (isNaN(digit) || digit === 0) {
         alert(`This is bad digit, good bye!`);
-    }
-
-    else
-    {
-        if(actionUser === `Add`)
-    {
-        const sum = firstNumber + secondNumber;
-        alert(`Sum of ${firstNumber} and ${secondNumber} equals: ${sum}`);
+    } else {
+        if (actionUser === `Sqrt`) {
+            result = Math.sqrt(digit);
+        }
+        if (actionUser === `Sin`) {
+            result = Math.sin(digit);
+        }
+        if (actionUser === `Cos`) {
+            result = Math.cos(digit);
+        }
+        alert(`${actionUser} of ${digit} is ${result}`);
         alert(greeting);
-    }
-    else if(actionUser === `Diff`)
-    {
-        const diffAction = firstNumber - secondNumber;
-        alert(`Difference of ${firstNumber} and ${secondNumber} equals: ${diffAction}`);
-        alert(greeting);
-    }
-    else if(actionUser === `Mult`)
-    {
-        const multAction = firstNumber * secondNumber;
-        alert(`Mult of ${firstNumber} and ${secondNumber} equals: ${multAction}`);
-        alert(greeting);
-    }
-    else if(actionUser === `Div`)
-    {
-        const divAction = firstNumber / secondNumber;
-        alert(`Div of ${firstNumber} and ${secondNumber} equals: ${divAction}`);
-        alert(greeting);
-    }
     }
 }
-else if(actionUser === `Sqrt`|| actionUser === `Sin`|| actionUser === `Cos`)
-{
-        
-    const digit = Number(prompt(`Enter a number:`));
 
-    if(isNaN(digit) || digit === 0)
-    {
-        alert(`This is bad digit, good bye!`);
-    }
-    else
-    {
-        if(actionUser === `Sqrt`)
-    {
-        const sqrtAction = Math.sqrt(digit);
-        alert(`Root of ${digit} equals: ${sqrtAction}`);
-        alert(greeting);
-    }
-    else if(actionUser === `Sin`)
-    {
-        const sinAction = Math.sin(digit);
-        alert(`Sin of ${digit} equals: ${sinAction}`);
-        alert(greeting);
-    }
-    else if(actionUser === `Cos`)
-    {
-        const cosAction = Math.cos(digit);
-        alert(`Cos of ${digit} equals: ${cosAction}`);
-        alert(greeting);
-    }
-    } 
-}
-
-else 
-{
-    alert(greeting);
-}
