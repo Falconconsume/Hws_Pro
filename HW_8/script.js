@@ -5,7 +5,7 @@ let history = [];
 let symbolUser;
 do {
     let actionUser = prompt(`What action you want to do? Add, Diff, Mult, Div, Sqrt, Sin, Cos, History`);
-    if (!actionUser) {
+    if (actionUser === null) {
         break;
     }
 
@@ -22,15 +22,29 @@ do {
         case `Diff`:
         case `Mult`:
         case `Div`:
-            let firstDigit = Number(prompt(`Enter the first number: `));
-            while (firstDigit === 0 || isNaN(firstDigit)) {
+            let firstDigit = prompt(`Enter the first number: `);
+            if (firstDigit === null) {
+                break; 
+            }
+            firstDigit = Number(firstDigit);
+            while (isNaN(firstDigit)) {
                 alert(`The first digit is invalid! Please enter a correct digit!`);
                 firstDigit = Number(prompt(`Enter the first number: `));
+                if (firstDigit === null) {
+                    break; 
+                }
             }
-            let secondDigit = Number(prompt(`Enter the second number: `));
-            while (secondDigit === 0 || isNaN(secondDigit)) {
+            let secondDigit = prompt(`Enter the second number: `);
+            if (secondDigit === null) {
+                break; // завершити роботу функції
+            }
+            secondDigit = Number(secondDigit);
+            while (isNaN(secondDigit)) {
                 alert(`The second digit is invalid! Please enter a correct digit!`);
                 secondDigit = Number(prompt(`Enter the second number: `));
+                if (secondDigit === null) {
+                    break; // завершити роботу функції
+                }
             }
 
             switch (actionUser) {
@@ -67,13 +81,18 @@ do {
             history.push(`${actionUser}: ${firstDigit} ${symbolUser} ${secondDigit} = ${result}`);
             alert(`${actionUser} of ${firstDigit} and ${secondDigit} is ${result}`);
             break;
-        
 
         case 'Sqrt':
         case 'Sin':
         case 'Cos':
-            const digit = Number(prompt(`Enter the number: `));
-            if (isNaN(digit) || digit === 0) {
+            let digit = prompt(`Enter the number: `);
+            if (digit === null) {
+                break; 
+            }
+            
+            digit = Number(digit);
+            
+            if (isNaN(digit)) {
                 alert(`The digit is invalid!`);
                 break;
             }
@@ -92,11 +111,10 @@ do {
 
             history.push(`${actionUser}: ${digit} = ${result}`);
             alert(`${actionUser} of ${digit} is ${result}`);
-            break;
-
+            
         default:
-            alert(`I don't recognize your operation. Please choose a correct operation like: Add, Diff, Mult, Div, Sqrt, Sin, Cos, History!`);
-            break;
+        alert(`I don't recognize your operation. Please choose a correct operation like: Add, Diff, Mult, Div, Sqrt, Sin, Cos, History!`);
+        break;
     }
 } while (confirm(`Do you want to continue working with me?`));
 
