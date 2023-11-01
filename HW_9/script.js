@@ -2,7 +2,7 @@ alert(`Welcome to calculator!`);
 const greeting = `Good bye, see you later!`;
 
 let history = [];
-
+let result;
 function getUserNumber(number)
 {
     while (isNaN(number)) {
@@ -11,50 +11,48 @@ function getUserNumber(number)
     }
     if (number === null) {
         return 0; 
-    }
-    else
+    } else
     {
         return number;
     }
 }
 
-function Sum(firstDigit,secondDigit)
+function sum(firstDigit,secondDigit)
 {
     return firstDigit + secondDigit;
 }
-function Diff(firstDigit,secondDigit)
+function diff(firstDigit,secondDigit)
 {
     return firstDigit - secondDigit;
 }
-function Mult(firstDigit,secondDigit)
+function mult(firstDigit,secondDigit)
 {
     return firstDigit * secondDigit;
 }
-function Div(firstDigit,secondDigit)
+function div(firstDigit,secondDigit)
 {
-
     return firstDigit / secondDigit;
 }
-function Sqrt(digit)
+function sqrt(digit)
 {
     return Math.sqrt(digit);    
 }    
-function Sin(digit)
+function sin(digit)
 {
     return Math.sin(digit);    
 }
-function Cos(digit)
+function cos(digit)
 {
     return Math.cos(digit);    
 }  
 
-function showNotification(actionUser,firstDigit,secondDigit,result)
+function showNotification(actionUser, firstDigit, secondDigit, result)
 {
     alert(`${actionUser.toUpperCase()} of ${firstDigit} and ${secondDigit} is ${result}`);
     history.push(`${actionUser} of ${firstDigit} and ${secondDigit} is ${result}`);
 }
 
-function showNotificationTriomagry(actionUser,digit,result)
+function showNotificationTriomagry(actionUser, digit, result)
 {
     alert(`${actionUser.toUpperCase()} of ${digit} is ${result}`);
     history.push(`${actionUser} of ${digit} is ${result}`);
@@ -89,19 +87,27 @@ do {
         case `div`:
             let firstDigit = Number(prompt(`Enter the first number:`));
             firstDigit = getUserNumber(firstDigit);
-            if (firstDigit === 0) break;
+            if (firstDigit === 0) 
+            {
+                alert(`You didn't enter the number!`)
+                break;
+            } 
         
             let secondDigit = Number(prompt(`Enter the second number: `));
             secondDigit = getUserNumber(secondDigit);
-            if (secondDigit === 0) break;
+            if (secondDigit === 0) 
+            {
+                alert(`You didn't enter the number!`)
+                break;
+            } 
 
         
             switch(actionUser)
             {
-                case `add`: result = Sum(firstDigit,secondDigit); break;
-                case `diff`: result = Diff(firstDigit,secondDigit); break;
-                case `mult`: result = Mult(firstDigit,secondDigit); break;
-                case `div`: result = Div(firstDigit,secondDigit); break;
+                case `add`: result = sum(firstDigit,secondDigit); break;
+                case `diff`: result = diff(firstDigit,secondDigit); break;
+                case `mult`: result = mult(firstDigit,secondDigit); break;
+                case `div`: result = div(firstDigit,secondDigit); break;
             }
             if(result !== null){
                 showNotification(actionUser,firstDigit,secondDigit,result);
@@ -117,9 +123,9 @@ do {
 
             switch(actionUser)
             {
-                case `sqrt`: result = Sqrt(digit); break;
-                case `sin`: result = Sin(digit); break;
-                case `cos`: result = Cos(digit); break;   
+                case `sqrt`: result = sqrt(digit); break;
+                case `sin`: result = sin(digit); break;
+                case `cos`: result = cos(digit); break;   
             }
             if (digit !== null && digit !== 0)
             {
