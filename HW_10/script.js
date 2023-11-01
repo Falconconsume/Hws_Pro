@@ -1,9 +1,8 @@
-function removeElement(array,item)
-{
-    const index = array.indexOf(item);
-    (index !==-1 ) ? array.splice(index,1) : null;
+function removeElement(array, item) {
+    let newArray = array.filter(element => JSON.stringify(element) !== JSON.stringify(item));
+    return newArray;
 }
 
-const array = [`Oleg`, `Artem`, 8, `Olga`, `Sasha`, 9 , 11,];
-removeElement(array, 9);
-console.log(array);
+let array = [1, 2, 3, 4, 5, 'string', [1, 2, 3]];
+let result = removeElement(array, `string`);
+console.log(result);
