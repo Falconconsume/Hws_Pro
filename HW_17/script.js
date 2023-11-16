@@ -4,7 +4,8 @@ class Student {
         this.fullName = fullName;
         this.yearOfBorn = yearOfBorn;
         this.marks = [];
-        this.visitits = new Array(25);
+        this.visitits = new Array(25).fill(null);
+        this.visitIndex = 0;
     }
     age()
     {
@@ -26,6 +27,7 @@ class Student {
         }
         return sum/this.marks.length;
     }
+    
     estimate(mark)
     {
         this.marks.push(mark); 
@@ -33,11 +35,20 @@ class Student {
 
     present()
     {
-        this.visitits.push(true);
+        if(this.visitIndex < this.visitits.length)
+        {
+            this.visitits[this.visitIndex] = true;
+            this.visitIndex++;
+        }    
     }
+
     absent()
     {
-        this.visitits.push(false);
+        if(this.visitIndex < this.visitits.length)
+        {
+            this.visitits[this.visitIndex] = false;
+            this.visitIndex++;
+        }
     }
 
     averageVisits()
