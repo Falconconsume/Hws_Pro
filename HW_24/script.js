@@ -89,7 +89,7 @@ function displayProductDetails(product) {
         let messageBox = document.getElementById('message-box');
         messageBox.style.position = 'absolute';
         messageBox.style.top = '300px';
-        messageBox.textContent = 'Товар ${product} куплено!';
+        messageBox.textContent = `Товар ${product} куплено!`;
         messageBox.style.display = 'block';
         messageBox.style.fontSize = '22px'
         setTimeout(function() {
@@ -109,3 +109,4 @@ function displayProductDetails(product) {
 }
 
 window.addEventListener('load', displayCatagories);
+
