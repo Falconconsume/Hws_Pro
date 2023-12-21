@@ -74,6 +74,7 @@ function displayProducts(catagory) {
     })
 }
 
+
 function displayProductDetails(product) {
     let rightBlock = document.getElementById('right-block');
     while (rightBlock.firstChild) {
@@ -85,101 +86,126 @@ function displayProductDetails(product) {
     rightBlock.appendChild(productDetail);
     let button = document.createElement('button');
     button.textContent = 'Купити';
+    
     button.style = 'background-color: green; border-radius: 6px; border: 0px; margin: 12px; padding: 12px; color:white';
     button.onclick = function() {
 
+        function createLabel(textLabel) {
+            let label = document.createElement('label');
+            label.textContent = textLabel;
+            return label;
+        }
+        
+        function createInput() {
+            let input = document.createElement('input');
+            return input;
+        }
+
+        function createFormAppend(el) {
+            return form.append(el);
+        }
+
+        function createTitle(textContent) {
+            let h2 = document.createElement('h2');
+            h2.textContent = textContent;
+            return h2;
+        }
+
+        function createCityAppend(el) {
+            return selectCity.append(el)
+        }
+        
+
         let form = document.getElementById('forms');
-        form.style = ''
-        let h2 = document.createElement('h2');
-        h2.textContent = 'Форма оформлення замовлення';
-        form.appendChild(h2);
+        if (!form) {
+            form = document.createElement('form');
+            form.id = 'forms';
+            mainContainer.appendChild(form);
+        } else {
+            while (form.firstChild) {
+                form.removeChild(form.firstChild);
+            }
+        }
+        let h2 = createTitle('Форма оформлення замовлення');
+        createFormAppend(h2);
         form.style = 'position: absolute; top: 500px';
-        let labelPIB = document.createElement('label');
-        labelPIB.textContent = 'ПІБ покупця:';
+        let labelPIB = createLabel('ПІБ покупця:');
         labelPIB.style = 'font-size:20px';
-        form.appendChild(labelPIB);
+        createFormAppend(labelPIB);
         let br = document.createElement('br');
-        form.appendChild(br);
-        let input = document.createElement('input');
+        createFormAppend(br);
+        let input = createInput();
         input.type = 'text';
-        input.required = 'true';
-        form.appendChild(input)
+        createFormAppend(input)
         form.appendChild(br.cloneNode());
 
-        let labelCity = document.createElement('label');
-        labelCity.textContent = 'Місто:';
+        let labelCity = createTitle('Місто:');
         labelCity.style = 'font-size:20px'
-        form.appendChild(labelCity);
-        form.appendChild(br.cloneNode());
+        createFormAppend(labelCity);
+        createFormAppend(br.cloneNode());
         let selectCity = document.createElement('select');
         let optionKyiv = new Option('Київ');
         let optionLviv = new Option('Львів');
         let optionTernopil = new Option('Тернопіль');
         let optionOdessa = new Option('Одеса', );
         let optionCharkiv = new Option('Харків', );
-        form.appendChild(selectCity);
-        selectCity.appendChild(optionKyiv);
-        selectCity.appendChild(optionLviv);
-        selectCity.appendChild(optionTernopil);
-        selectCity.appendChild(optionKyiv);
-        selectCity.appendChild(optionOdessa);
-        selectCity.appendChild(optionCharkiv);
-        form.appendChild(br.cloneNode());
+        createFormAppend(selectCity);
+        createCityAppend(optionKyiv);
+        createCityAppend(optionLviv);
+        createCityAppend(optionTernopil);
+        createCityAppend(optionKyiv);
+        createCityAppend(optionOdessa);
+        createCityAppend(optionCharkiv);
+        createFormAppend(br.cloneNode());
 
-        let labelPostOffice = document.createElement('label');
-        labelPostOffice.textContent = 'Склад нової пошти для надсилання:';
+        let labelPostOffice = createTitle('Склад нової пошти для надсилання');
         labelPostOffice.style = 'font-size:20px'
-        form.appendChild(labelPostOffice);
-        form.appendChild(br.cloneNode());
-        let inputPostOffice = document.createElement('input');
-        inputPostOffice.required = 'true';
-        form.appendChild(inputPostOffice);
-        form.appendChild(br.cloneNode());
+        createFormAppend(labelPostOffice);
+        createFormAppend(br.cloneNode());
+        let inputPostOffice = createInput();
+        createFormAppend(inputPostOffice);
+        createFormAppend(br.cloneNode());
 
-        let labelPay = document.createElement('label');
-        labelPay.textContent = 'Метод оплати:';
+        let labelPay = createTitle('Метод оплати: ');
         labelPay.style = 'font-size:20px'
-        form.appendChild(labelPay);
-        form.appendChild(br.cloneNode());
+        createFormAppend(labelPay);
+        createFormAppend(br.cloneNode());
         let selectPayment = document.createElement('select');
         let optionPay1 = new Option('Післяоплата');
         let optionPay2 = new Option('Оплата банківською карткою');
-        form.appendChild(selectPayment);
+        createFormAppend(selectPayment);
         selectPayment.appendChild(optionPay1);
         selectPayment.appendChild(optionPay2);
-        form.appendChild(br.cloneNode());
+        createFormAppend(br.cloneNode());
 
-        let labelQuantity = document.createElement('label');
-        labelQuantity.textContent = 'Кількість продукції, що купується:';
+        let labelQuantity = createTitle('Кількість продукції, що купується:');
         labelQuantity.style = 'font-size:20px'
-        form.appendChild(labelQuantity);
-        form.appendChild(br.cloneNode());
-        let inputQuantity = document.createElement('input');
+        createFormAppend(labelQuantity);
+        createFormAppend(br.cloneNode());
+        let inputQuantity = createInput();
         inputQuantity.required = 'true';
         inputQuantity.type = 'number'
         inputQuantity.min = '1';
-        form.appendChild(inputQuantity);
-        form.appendChild(br.cloneNode());
+        createFormAppend(inputQuantity);
+        createFormAppend(br.cloneNode());
 
-        let labelComment = document.createElement('label');
-        labelComment.textContent = 'Коментар до замовлення:';
+        let labelComment = createTitle('Коментар до замовлення:');
         labelComment.style = 'font-size:20px'
-        form.appendChild(labelComment);
-        form.appendChild(br.cloneNode());
+        createFormAppend(labelComment);
+        createFormAppend(br.cloneNode());
         let textAreaComment = document.createElement('textarea');
-        form.appendChild(textAreaComment);
-        form.appendChild(br.cloneNode());
+        createFormAppend(textAreaComment);
+        createFormAppend(br.cloneNode());
         let buttonForm = document.createElement('button');
         buttonForm.textContent = 'Підтвердити'
         buttonForm.type = 'submit';
         buttonForm.style = 'padding: 20px; border-radius:8px; font-size: 24px; background-color: orange; border: 0px; font-weight: 700;'
-        form.appendChild(buttonForm);
+        createFormAppend(buttonForm);
 
         buttonForm.onclick = function(event) {
             event.preventDefault();
             let inputPIB = document.querySelector('input[type="text"]');
             let selectCity = document.querySelector('select');
-            let inputPostOffice = document.querySelector('input[type="text"]');
             let selectPay = document.querySelector('select');
             let inputQuantity = document.querySelector('input[type="number"]');
             if (
@@ -203,7 +229,7 @@ function displayProductDetails(product) {
             orderInfo.appendChild(productInfo);
 
             let deliveryInfo = document.createElement('p');
-            deliveryInfo.innerHTML = 'Доставка товару: ' + product + '<br>Місто: ' + selectCity.value + '<br>Склад нової пошти для надсилання: ' + inputPostOffice.value + '<br> Метод оплати: ' + selectPayment.value + '<br> Кількість продукції, що купується: ' + inputQuantity.value + '<br> Коментар до замовлення: ' + textAreaComment.value + '<br> <br> Дякуємо за покупку!';
+            deliveryInfo.innerHTML = 'Доставка товару: ' + product + '<br>ПІБ: ' + input.value + '<br>Місто: ' + selectCity.value + '<br>Склад нової пошти для надсилання: ' + inputPostOffice.value + '<br> Метод оплати: ' + selectPayment.value + '<br> Кількість продукції, що купується: ' + inputQuantity.value + '<br> Коментар до замовлення: ' + textAreaComment.value + '<br> <br> Дякуємо за покупку!';
             setTimeout(function() {
                 orderInfo.style.display = 'none';
             }, 5000);
