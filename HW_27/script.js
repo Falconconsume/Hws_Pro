@@ -124,7 +124,7 @@ function deleteOrder(orderId, order) {
         const updatedOrders = orders.filter(order => order.id !== orderId);
         orders = updatedOrders;
         saveOrders();
-    } 
+    }
     const orderDetails = document.querySelectorAll(`.order-details[data-id="${orderId}"]`);
     orderDetails.forEach(detail => detail.remove());
 }
@@ -145,11 +145,11 @@ function displayOrders() {
         </div>
         <div class="order-details" data-id="${order.id}"></div>
     </div> 
-    <br>`;//знаю, я поганий студент
+    <br>`; //знаю, я поганий студент
     });
     const ordersContainer = document.getElementById('orders');
     ordersContainer.innerHTML = ordersHtml;
-    
+
     orders.forEach(order => {
         const orderElement = document.querySelector(`.order[data-id="${order.id}"]`);
         orderElement.style = 'cursor:pointer'
@@ -161,7 +161,7 @@ function displayOrders() {
     orders.forEach(order => {
         const btnDelete = document.getElementById(`btnDelete${order.id}`);
         btnDelete.style = 'padding:10px; color: #0000FF; background-color: grey; font-size: 22px; font-weight: 700; border: 0px; border-radius: 8px'
-        btnDelete.addEventListener('click', function (e) {
+        btnDelete.addEventListener('click', function(e) {
             e.stopPropagation();
             deleteOrder(order.id);
         });
@@ -179,7 +179,7 @@ function displayOrderDetails(orderId) {
     existingDetails.forEach(detail => detail.remove());
 
     const order = orders.find(order => order.id === orderId);
-    if(order) {
+    if (order) {
         createP(`Товар ${order.product}`, orderId);
         createP(`ПІБ: ${order.PIB}`, orderId);
         createP(`Місто: ${order.city}`, orderId);
@@ -208,7 +208,7 @@ function displayProductDetails(product) {
     rightBlock.appendChild(productDetail);
     let button = document.createElement('button');
     button.textContent = 'Купити';
-    
+
     button.style = 'background-color: green; border-radius: 6px; border: 0px; margin: 12px; padding: 12px; color:white';
     button.onclick = function() {
 
@@ -217,7 +217,7 @@ function displayProductDetails(product) {
             label.textContent = textLabel;
             return label;
         }
-        
+
         function createInput() {
             let input = document.createElement('input');
             return input;
@@ -236,7 +236,7 @@ function displayProductDetails(product) {
         function createCityAppend(el) {
             return selectCity.append(el)
         }
-        
+
 
         let form = document.getElementById('forms');
         if (!form) {
@@ -343,7 +343,7 @@ function displayProductDetails(product) {
 
             let orderId = Math.floor(Math.random() * 1000);
             orders.push({
-                id:orderId,
+                id: orderId,
                 date: new Date().toLocaleDateString(),
                 price: prices[product] * inputQuantity.value,
                 product: product,
