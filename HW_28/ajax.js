@@ -24,19 +24,18 @@ function sendRequest(method, url) {
     });
 }
 
-function appendElement(container, nameChild, nameChildText,className) {
+function appendElement(container, nameChild, nameChildText, className) {
     nameChild = document.createElement('h6');
     nameChild.textContent = nameChildText;
     container.append(nameChild);
     nameChild.classList.add(className)
 }
 
-
 sendRequest('GET', requestURL)
     .then(data => {
         const title = document.createElement('h1');
         title.textContent = 'Weather forecast';
-        
+
         const container = document.createElement('div');
         document.body.append(container);
         container.append(title);
@@ -53,9 +52,9 @@ sendRequest('GET', requestURL)
         appendElement(container, 'temp', `Temperature: ${data.main.temp}°`, 'weatherTemp');
         appendElement(container, 'pressure', `Pressure: ${data.main.pressure}`, 'weatherPressure');
         appendElement(container, 'description ', `Description : ${data.weather[0].description}`, 'weatherDescription');
-        appendElement(container, 'humidity', `Humidity  : ${data.main.humidity}`, 'weatherHumidity');    
+        appendElement(container, 'humidity', `Humidity  : ${data.main.humidity}`, 'weatherHumidity');
         appendElement(container, 'speed ', `Speed   : ${data.wind.speed} m/s`, 'weatherSpeed');
         appendElement(container, 'deg', `Deg : ${data.wind.deg}°`, 'weatherDeg');
-        
+
     })
     .catch(error => console.error(error));
