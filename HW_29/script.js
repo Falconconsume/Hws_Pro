@@ -154,7 +154,7 @@ const email = [
 const pattern = /\w+([\.-]?\w+)*@\w+([\.-]?\w+)*\.\w+(\.\w{2,})+$/;
 
 function validateEmail(email, pattern) {
-    let validEmails = email.some(e => pattern.test(e));
+    let validEmails = email.every(e => pattern.test(e));
 
     return validEmails;
 }
