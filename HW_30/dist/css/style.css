@@ -1,0 +1,9 @@
+body {
+  background-color: #333;
+}
+body span {
+  color: yellow;
+}
+body h1 {
+  color: grey;
+}
