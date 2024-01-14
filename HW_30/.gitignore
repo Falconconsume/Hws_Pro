@@ -1,6 +1,6 @@
 /node_modules
-html/
-ftp.js/
-scss.js/
-reset.js/
+src/html/
+config/ftp.js/
+tasks/scss.js/
+tasks/reset.js/
 
