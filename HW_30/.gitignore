@@ -1,6 +1,2 @@
 /node_modules
-/src/html/
-/config/ftp.js/
-/tasks/scss.js/
-/tasks/reset.js/
 /dist
