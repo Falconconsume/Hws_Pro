@@ -1,6 +1,6 @@
 /node_modules
-/src/html
-/gulp/config/ftp.js
-/gulp/tasks/scss.js
-/gulp/tasks/reset.js
+html/
+ftp.js/
+scss.js/
+reset.js/
 
