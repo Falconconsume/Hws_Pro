@@ -1,29 +1,48 @@
+import React, { Component } from "react";
 import { contacts } from "./data";
 import Form from "./components/Form";
-import { useState } from "react";
 import Contacts from "./components/Contacts";
 
-function App() {
-  const [contact, setContact] = useState(contacts);
-  const [form, setForm] = useState(false);
-  const handleDelete = (id) => {
-    const newContacts = contact.filter((e) => e.id !== id);
-    setContact(newContacts);
-  };
-  const handleAdd = (newContact) => {
-    setContact([...contact,newContact])
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      contact: contacts,
+      form: false,
+    };
   }
 
-  return (
-    <div>
-      <Contacts
-        contacts={contact}
-        setForm={setForm}
-        handleDelete={handleDelete}
-      />
-      <Form active={form} setActive={setForm} handleAdd = {handleAdd}/>
-    </div>
-  );
-}
+  setContact = (contact) => {
+    this.setState({ contact });
+  };
 
-export default App;
+  handleAdd = (newContact) => {
+    this.setContact([...this.state.contact, newContact]);
+  };
+
+  handleDelete = (id) => {
+    const newContacts = this.state.contact.filter((e) => e.id !== id);
+    this.setContact(newContacts);
+  };
+
+  setForm = (form) => {
+    this.setState({ form });
+  };
+
+  render() {
+    return (
+      <div>
+        <Contacts
+          contacts={this.state.contact}
+          setForm={this.setForm}
+          handleDelete={this.handleDelete}
+        />
+        <Form
+          active={this.state.form}
+          setActive={this.setForm}
+          handleAdd={this.handleAdd}
+        />
+      </div>
+    );
+  }
+}
