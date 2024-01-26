@@ -8,14 +8,14 @@ export default class Form extends Component {
     };
   }
 
-  handleChange = (e) => {
+  addhandleContactChange = (e) => {
     this.setState({
       inputValue: { ...this.state.inputValue, [e.target.name]: e.target.value },
     });
   };
 
-  handleSubmit = () => {
-    this.props.handleAdd(this.state.inputValue);
+  handleSubmitForm = () => {
+    this.props.addNewContactHandler(this.state.inputValue);
     this.setState({ inputValue: { name: "", surname: "", phone: "", id: 11 } });
     this.props.setActive(false);
   };
@@ -28,32 +28,34 @@ export default class Form extends Component {
       >
         <div className="modal__content" onClick={(e) => e.stopPropagation()}>
           <h1 className="title_contact">Форма оформлення контакту</h1>
-          <input
-            className="input_form"
-            placeholder="Введіть ім'я"
-            type="text"
-            name="name"
-            value={this.state.inputValue.name}
-            onChange={this.handleChange}
-          />
-          <input
-            className="input_form"
-            placeholder="Введіть прізвище"
-            type="text"
-            name="surname"
-            value={this.state.inputValue.surname}
-            onChange={this.handleChange}
-          />
-          <input
-            className="input_form"
-            placeholder="Введіть номер телефону"
-            type="text"
-            name="phone"
-            value={this.state.inputValue.phone}
-            onChange={this.handleChange}
-          />
+          <form action="submit">
+            <input
+              className="input_form"
+              placeholder="Введіть ім'я"
+              type="text"
+              name="name"
+              value={this.state.inputValue.name}
+              onChange={this.addhandleContactChange}
+            />
+            <input
+              className="input_form"
+              placeholder="Введіть прізвище"
+              type="text"
+              name="surname"
+              value={this.state.inputValue.surname}
+              onChange={this.addhandleContactChange}
+            />
+            <input
+              className="input_form"
+              placeholder="Введіть номер телефону"
+              type="text"
+              name="phone"
+              value={this.state.inputValue.phone}
+              onChange={this.addhandleContactChange}
+            />
+          </form>
           <div className="btn-form">
-            <button className="btnClick" onClick={this.handleSubmit}>
+            <button className="btnClick" onClick={this.handleSubmitForm}>
               Зберегти
             </button>
             <button

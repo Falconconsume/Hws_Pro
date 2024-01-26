@@ -1,32 +1,15 @@
-import React from "react";
+import ListContacts from "../components/ListContacts";
 
-
-export default function Contacts({ contacts,setForm, handleDelete }) {
-    
+export default function Contacts({ contacts, deleteContact, setActive }) {
   return (
     <div>
-      <section className="section_contacts">
-        <ul className="list_group">
-          <h3>Телефонні контакти:</h3>
-          {contacts.map((contact) => (
-            <li className="list_group-item" key={contact.id}>
-              <p>
-                {contact.name} {contact.surname}: {contact.phone}
-              </p>
-              <br />
-              <button
-                onClick={() => handleDelete(contact.id)}
-                className="btn-delete"
-              >
-                Видалити
-              </button>
-            </li>
-          ))}
-        </ul>
-        <button onClick={() => setForm(true)} className="btn-add-contact">
-          Додати контакт
-        </button>
-      </section>
+      <ListContacts contacts={contacts} deleteContact={deleteContact} />
+      <button
+        onClick={() => setActive(true)}
+        className="btn_add-contact text-2xl text-stone-900 "
+      >
+        Додати контакт
+      </button>
     </div>
   );
 }

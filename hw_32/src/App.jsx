@@ -16,11 +16,11 @@ export default class App extends Component {
     this.setState({ contact });
   };
 
-  handleAdd = (newContact) => {
+  addNewContactHandler = (newContact) => {
     this.setContact([...this.state.contact, newContact]);
   };
 
-  handleDelete = (id) => {
+  deleteNewContactHandler = (id) => {
     const newContacts = this.state.contact.filter((e) => e.id !== id);
     this.setContact(newContacts);
   };
@@ -35,12 +35,12 @@ export default class App extends Component {
         <Contacts
           contacts={this.state.contact}
           setForm={this.setForm}
-          handleDelete={this.handleDelete}
+          deleteNewContactHandler={this.deleteNewContactHandler}
         />
         <Form
           active={this.state.form}
           setActive={this.setForm}
-          handleAdd={this.handleAdd}
+          addNewContactHandler={this.addNewContactHandler}
         />
       </div>
     );

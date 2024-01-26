@@ -1,27 +1,31 @@
+import React, { useState } from "react";
+import "./styles/index.css";
 import { contacts } from "./data";
-import Form from "./components/Form";
-import { useState } from "react";
 import Contacts from "./components/Contacts";
+import Form from "./components/Form";
 
 function App() {
   const [contact, setContact] = useState(contacts);
-  const [form, setForm] = useState(false);
-  const handleDelete = (id) => {
-    const newContacts = contact.filter((e) => e.id !== id);
-    setContact(newContacts);
+  const [active, setActive] = useState(false);
+
+  const deleteContact = (id) => {
+    const newList = contact.filter((e) => id !== e.id);
+    setContact(newList);
   };
-  const handleAdd = (newContact) => {
-    setContact([...contact,newContact])
-  }
+
+  const addContact = (newContact) => {
+    setContact([...contact, newContact]);
+  };
 
   return (
-    <div>
+    <div className="container mx-auto px-20 content_center">
       <Contacts
         contacts={contact}
-        setForm={setForm}
-        handleDelete={handleDelete}
+        setContact={setContact}
+        deleteContact={deleteContact}
+        setActive={setActive}
       />
-      <Form active={form} setActive={setForm} handleAdd = {handleAdd}/>
+      <Form isActive={active} setActive={setActive} addContact={addContact} />
     </div>
   );
 }

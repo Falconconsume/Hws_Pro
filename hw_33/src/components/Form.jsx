@@ -1,59 +1,69 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
-export default function Form({ active, setActive, handleAdd }) {
-  let objInput = { name: "",surname: "", phone: "" };
+export default function Form({ setActive, isActive, addContact }) {
+  const objInput = { name: "", surname: "", phone: "", id: Math.random() };
   const [inputValue, setInputValue] = useState(objInput);
-  const handleChange = (e) => {
-    setInputValue({ ...inputValue, [e.target.name]: e.target.value });
-  };
 
-  const handleSubmit = () => {
-    handleAdd(inputValue);
+  const formSubmitHandler = (e) => {
+    e.preventDefault();
+    addContact(inputValue);
     setInputValue(objInput);
     setActive(false);
   };
-  
+
+  const addSubmitToList = (e) => {
+    setInputValue({ ...inputValue, [e.target.name]: e.target.value });
+  };
 
   return (
-    <section
-      className={active ? "modal_form active" : "modal_form"}
-      onClick={() => setActive(false)}
-    >
-      <div className="modal__content" onClick={(e) => e.stopPropagation()}>
-        <h1 className="title_contact">Форма оформлення контакту</h1>
-        <input
-          className="input_form"
-          placeholder="Введіть ім'я"
-          type="text"
-          name="name"
-          value={inputValue.name}
-          onChange={handleChange}
-        />
-        <input
-          className="input_form"
-          placeholder="Введіть прізвище"
-          type="text"
-          name="surname"
-          value={inputValue.surname}
-          onChange={handleChange}
-        />
-        <input
-          className="input_form"
-          placeholder="Введіть номер телефону"
-          type="text"
-          name="phone"
-          value={inputValue.phone}
-          onChange={handleChange}
-        />
-        <div className="btn-form">
-          <button className="btnClick" onClick={handleSubmit}>
-            Зберегти
-          </button>
-          <button className="btnClick" onClick={() => setActive(false)}>
-            Скасувати
-          </button>
-        </div>
-      </div>
-    </section>
+    <div>
+      <section
+        className={isActive ? "modal_window active" : "modal_window"}
+        onClick={() => setActive(false)}
+      >
+        <form
+          className="modal__content"
+          action="submit"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <h1 className="text-center text-2xl">Форма оформлення контакту</h1>
+          <input
+            className="input_form"
+            placeholder="Введіть ваше ім'я"
+            type="text"
+            name="name"
+            value={inputValue.name}
+            onChange={addSubmitToList}
+          />
+          <input
+            className="input_form"
+            placeholder="Введіть вашу фамілію"
+            type="text"
+            name="surname"
+            value={inputValue.surname}
+            onChange={addSubmitToList}
+          />
+          <input
+            className="input_form"
+            placeholder="Введіть ваш номер"
+            type="text"
+            name="phone"
+            value={inputValue.phone}
+            onChange={addSubmitToList}
+          />
+          <div className="flex justify-between">
+            <button className="btn-form" onClick={formSubmitHandler}>
+              Відправити
+            </button>
+            <button className="btn-form" onClick={(e) => {
+                e.preventDefault();
+                setActive(false);
+                }}>
+              Скасувати
+            </button>
+          </div>
+        </form>
+      </section>
+    </div>
   );
 }
