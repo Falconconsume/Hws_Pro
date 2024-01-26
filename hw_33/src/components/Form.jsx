@@ -55,10 +55,13 @@ export default function Form({ setActive, isActive, addContact }) {
             <button className="btn-form" onClick={formSubmitHandler}>
               Відправити
             </button>
-            <button className="btn-form" onClick={(e) => {
+            <button
+              className="btn-form"
+              onClick={(e) => {
                 e.preventDefault();
                 setActive(false);
-                }}>
+              }}
+            >
               Скасувати
             </button>
           </div>
