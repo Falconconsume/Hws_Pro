@@ -1,5 +1,6 @@
 import ListContacts from "../components/ListContacts";
 
+
 export default function Contacts({ contacts, deleteContact, setActive }) {
   return (
     <div>
