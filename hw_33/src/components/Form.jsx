@@ -1,6 +1,20 @@
 import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Form({ setActive, isActive, addContact }) {
+  const notify = () =>
+    toast.success("You added the contact! 🦄", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+
   const objInput = { name: "", surname: "", phone: "", id: Math.random() };
   const [inputValue, setInputValue] = useState(objInput);
 
@@ -52,7 +66,13 @@ export default function Form({ setActive, isActive, addContact }) {
             onChange={addSubmitToList}
           />
           <div className="flex justify-between">
-            <button className="btn-form" onClick={formSubmitHandler}>
+            <button
+              className="btn-form"
+              onClick={(e) => {
+                formSubmitHandler(e);
+                notify();
+              }}
+            >
               Відправити
             </button>
             <button
@@ -67,6 +87,18 @@ export default function Form({ setActive, isActive, addContact }) {
           </div>
         </form>
       </section>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </div>
   );
 }

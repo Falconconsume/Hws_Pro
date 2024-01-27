@@ -42,6 +42,7 @@ export default class App extends Component {
           setActive={this.setForm}
           addNewContactHandler={this.addNewContactHandler}
         />
+        
       </div>
     );
   }
