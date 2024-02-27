@@ -1,23 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
-import addTodo from "../ducks/addTodo.ducks";
-import deleteTodo from "../ducks/deleteTodo.ducks";
-import toggleTodo from "../ducks/toggleTodo.ducks";
-import fetchTodos from "../ducks/fetchTodos.ducks";
+import todosReducer from "../ducks/todoSlices.ducks";
 
-const rootReducer = {
-  addTodo,
-  deleteTodo,
-  toggleTodo,
-  todos: fetchTodos,
-};
-
-const store = configureStore({
-  reducer: rootReducer,
+export const store = configureStore({
+  reducer: {
+    todos: todosReducer,
+  },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
-      serializableCheck: false,
-    }).concat(),
+      serializableCheck: false, // To avoid serializable state errors for functions during development
+    }).concat(/* any other middleware you may have */),
   devTools: process.env.NODE_ENV !== "production",
 });
-
-export default store;

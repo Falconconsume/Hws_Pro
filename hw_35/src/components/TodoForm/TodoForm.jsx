@@ -2,6 +2,7 @@ import React from "react";
 import { Formik, Field, Form } from "formik";
 import { Button, TextField } from "@mui/material";
 import * as Yup from "yup";
+import "../../index";
 
 const TodoForm = ({ addTodo }) => {
   const SignupSchema = Yup.object().shape({
@@ -16,7 +17,7 @@ const TodoForm = ({ addTodo }) => {
       initialValues={{ todo: "" }}
       validationSchema={SignupSchema}
       onSubmit={(values) => {
-        addTodo(values.todo);
+        addTodo(Date.now(), values.todo, false);
       }}
     >
       {({ errors, touched }) => (
