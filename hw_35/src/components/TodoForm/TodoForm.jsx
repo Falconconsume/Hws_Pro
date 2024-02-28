@@ -17,12 +17,20 @@ const TodoForm = ({ addTodo }) => {
       initialValues={{ todo: "" }}
       validationSchema={SignupSchema}
       onSubmit={(values) => {
-        addTodo(Date.now(), values.todo, false);
+        if (!values.todo.trim()) return;
+        addTodo({ id: Date.now(), text: values.todo, completed: false });
+        values.todo = "";
       }}
     >
-      {({ errors, touched }) => (
+      {({ errors, touched, values, handleChange }) => (
         <Form>
-          <Field as={TextField} name="todo" label="Todo" />
+          <Field
+            as={TextField}
+            name="todo"
+            label="Todo"
+            value={values.todo}
+            onChange={handleChange}
+          />
           {errors.todo && touched.todo ? <div>{errors.todo}</div> : null}
           <Button type="submit">Add Todo</Button>
         </Form>

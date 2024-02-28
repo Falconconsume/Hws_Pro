@@ -7,7 +7,7 @@ export const store = configureStore({
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
-      serializableCheck: false, // To avoid serializable state errors for functions during development
-    }).concat(/* any other middleware you may have */),
+      serializableCheck: false,
+    }).concat(),
   devTools: process.env.NODE_ENV !== "production",
 });

@@ -39,12 +39,12 @@ const TodoList = () => {
       <h2>Todos</h2>
       <List>
         {todos.map((todo) => (
-          <ListItem
-            key={todo.id}
-            onClick={() => handleToggle(todo.id)}
-            sx={{ textDecoration: todo.completed ? "line-through" : "none" }}
-          >
-            <ListItemText primary={todo.title} />
+          <ListItem key={todo.id}>
+            <ListItemText
+              onClick={() => handleToggle(todo.id)}
+              sx={{ textDecoration: todo.completed ? "line-through" : "none" }}
+              primary={todo.text}
+            />
             <Button onClick={() => handleDelete(todo.id)}>Delete</Button>
           </ListItem>
         ))}

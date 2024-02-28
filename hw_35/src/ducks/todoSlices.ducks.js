@@ -27,7 +27,7 @@ export const toggleTodo = createAsyncThunk("todos/toggleTodo", async (id) => {
   const response = await fetch(
     `https://65cb708defec34d9ed878725.mockapi.io/Tasks/${id}`,
     {
-      method: "PATCH",
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
