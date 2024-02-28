@@ -1,3 +1,5 @@
+// theme.js
+import { createTheme } from "@mui/material/styles";
 import { amber, deepOrange, grey } from "@mui/material/colors";
 
 export const getDesignTokens = (mode) => ({
@@ -26,3 +28,5 @@ export const getDesignTokens = (mode) => ({
         }),
   },
 });
+
+export const theme = createTheme(getDesignTokens("light"));

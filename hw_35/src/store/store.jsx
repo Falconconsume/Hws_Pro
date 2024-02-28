@@ -1,15 +1,13 @@
-import { createStore, applyMiddleware, combineReducers } from "redux";
-import { composeWithDevTools } from "@redux-devtools/extension";
-import { thunk } from "redux-thunk";
+import { configureStore } from "@reduxjs/toolkit";
+import todosReducer from "../ducks/todoSlices.ducks";
 
-import todoListReducer from "./todoList/todoList.reducer";
-
-const rootReducer = combineReducers({
-  todoList: todoListReducer,
+export const store = configureStore({
+  reducer: {
+    todos: todosReducer,
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }).concat(),
+  devTools: process.env.NODE_ENV !== "production",
 });
-
-export const store = createStore(
-  rootReducer,
-  composeWithDevTools(applyMiddleware(thunk))
-);
-
